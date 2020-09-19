@@ -12,7 +12,7 @@ public interface FamousDtoLogic {
 	 */
 	FamousDto findTheRichest ();
 	
-	int insertFamous (FamousDto input);
+	FamousDto insertFamous (FamousDto input);
 	
 	List<FamousDto> getAll ();
 	

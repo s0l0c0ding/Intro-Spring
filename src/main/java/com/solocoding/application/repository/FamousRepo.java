@@ -1,4 +1,4 @@
-package com.solocoding.application.daoQuery;
+package com.solocoding.application.repository;
 
 import java.util.List;
 

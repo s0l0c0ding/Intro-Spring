@@ -23,10 +23,6 @@ public class Famous {
 	@CreationTimestamp
 	private Timestamp createdOn;
 	
-	
-	public Famous() {
-	}
-	
 	public long getId() {
 		return id;
 	}

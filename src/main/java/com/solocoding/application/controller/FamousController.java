@@ -2,18 +2,16 @@ package com.solocoding.application.controller;
 
 import java.util.List;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import com.solocoding.application.dto.FamousDto;
+import com.solocoding.application.entity.Famous;
+import com.solocoding.application.logic.FamousDtoLogic;
+import com.solocoding.application.repository.FamousRepo;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.solocoding.application.daoQuery.FamousRepo;
-import com.solocoding.application.dto.FamousDto;
-import com.solocoding.application.entity.Famous;
-import com.solocoding.application.logic.FamousDtoLogic;
 
 @RestController
 public class FamousController {
@@ -32,18 +30,16 @@ public class FamousController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<Integer> savFam (@RequestBody FamousDto input) {
-		Integer result = logic.insertFamous(input);
-		if (result == 0) return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-		return  new ResponseEntity<>(result, HttpStatus.OK); 
+	public FamousDto savFam (@RequestBody FamousDto input) {
+		return  logic.insertFamous(input); 
 	}
 	
-	@GetMapping("/findR")
+	@GetMapping("/richest")
 	public FamousDto findR () {
 		return logic.findTheRichest();
 	}
 	
-	@GetMapping("/findByName/{name}")
+	@GetMapping("/find/{name}")
 	public Famous findByName (@PathVariable String name) {
 		return repo.findByName(name);
 	}
